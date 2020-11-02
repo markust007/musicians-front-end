@@ -43,7 +43,6 @@ export default {
         msg: String
     },
     data: () => ({
-        url: window.location.origin,
         json: '',
         id: '',
         update: {
@@ -65,6 +64,9 @@ export default {
             if(this.json)
                 return this.json.some(item => item.edit)
             return false    
+        },
+        url() {
+            return process.env.NODE_ENV === 'production' ? 'https://musicians-back-end.herokuapp.com' : window.location.origin
         }
     },
     methods: {
